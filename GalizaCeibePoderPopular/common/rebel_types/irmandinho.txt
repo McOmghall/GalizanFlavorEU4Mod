@@ -1,0 +1,224 @@
+######################################################################
+# "Irmandinho" rebels. Galizan Peasant revolt.
+######################################################################
+irmandinhos = {
+
+	color = { 0 183 235 }
+
+	area = nation 					# Stays within the nation
+	government = any
+	defection = none				# Will defect to the "best" alternative.
+	independence = none				# Does not strive for independence
+	culture = galician
+	defect_delay = 120
+	gfx_type = culture_province
+	will_relocate = yes
+
+	resilient = no					# Disbands on retreat
+	reinforcing = yes				# Does not receive reinforcements
+	general = yes					# Guided by burghers and fidalgos
+	smart = no						# Does not assault forts, tactically withdraw from battle, etc.
+	unit_transfer = no				# Units do not remain after enforcing demands.
+	will_relocate = yes				# Units will relocate if they have sieged all provinces nearby and has to move over sea.
+
+	artillery = 0.1					# Canón de pau
+	infantry = 0.8
+	cavalry = 0.1
+	morale = 1.0
+
+
+	# Possible handle actions
+	handle_action_negotiate = yes
+	handle_action_stability = yes
+	handle_action_build_core = yes
+	handle_action_send_missionary = yes
+
+	# The rebel type with the highest modifier for this province gets picked
+	spawn_chance = {
+		factor = 9				# Only nationalists go first
+		modifier = {
+			factor = 0			# Only in Galiza, sempre en Galiza, and only if it's a monarchy
+			NOT = {
+				OR = {
+					area = galicia_area
+					culture = galician
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			owner = {
+				government = republic
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_overseas = yes
+		}
+		modifier = {
+			factor = 2.0
+			owner = {
+				has_wartaxes = yes
+			}
+		}
+		modifier = {
+			factor = 2.0
+			owner = {
+				war_exhaustion = 4
+			}
+		}
+		modifier = {
+			factor = 100.0
+			owner = {
+				has_disaster = peasant_war
+			}
+		}
+		modifier = {
+			factor = 0.5
+			owner = {
+				NOT = { primary_culture = ROOT } # We want other types instead
+				NOT = { has_disaster = peasant_war }
+			}
+		}
+	}
+
+ 	# This is checked for EACH province in the Area of Operations
+	movement_evaluation = {
+		factor = 1
+		modifier = {
+			factor = 0.1
+			units_in_province = 1
+		}
+		modifier = {
+			factor = 0.001
+			controlled_by = REB
+		}
+		modifier = {
+			factor = 1.5
+			unrest = 2
+		}
+		modifier = {
+			factor = 1.5
+			unrest = 4
+		}
+		modifier = {
+			factor = 1.5
+			unrest = 6
+		}
+		modifier = {
+			factor = 10
+			OR = {
+				area = galicia_area
+				culture = galician
+			}
+		}
+		modifier = {
+			factor = 10
+			OR = {
+				has_building = fort_15th				# fuck yer castles m8
+				has_building = fort_16th				# fuck yer castles m8
+				has_building = fort_17th				# fuck yer castles m8
+				has_building = fort_18th				# fuck yer castles m8
+			}
+		}
+	}
+
+ 	# Province Scope
+ 	siege_won_trigger = {
+ 		NOT = { local_autonomy = 50 }
+ 	}
+	siege_won_effect = {
+		if = {
+			limit = {
+				OR = {
+					has_building = fort_15th				# fuck yer castles m8
+					has_building = fort_16th				# fuck yer castles m8
+					has_building = fort_17th				# fuck yer castles m8
+					has_building = fort_18th				# fuck yer castles m8
+				}
+			}
+			remove_building = fort_15th				# fuck yer castles m8
+			remove_building = fort_16th				# fuck yer castles m8
+			remove_building = fort_17th				# fuck yer castles m8
+			remove_building = fort_18th				# fuck yer castles m8
+		}
+		random_neighbor_province = {
+			if = {
+				limit = {
+					has_province_modifier = irmandinhos_embolden_peasantry
+				}
+				spawn_rebels = {
+					type = irmandinhos
+					size = 1.5
+				}
+			}
+			else_if = {
+				limit = {
+					owner = {
+						government = monarchy
+					}
+				}
+				add_permanent_province_modifier = {
+					name = irmandinhos_embolden_peasantry
+					duration = 1000
+					desc = irmandinhos_embolden_peasantry_tooltip
+					hidden = no
+				}
+			}
+		}
+		add_local_autonomy = 10
+	}
+
+	# Country scope
+	can_negotiate_trigger = {
+		always = yes
+	}
+
+	# Country scope
+	can_enforce_trigger = {
+		always = yes
+	}
+
+	# Localisation for their demands
+	demands_description = "irmandinhos_demand"
+
+	# Country scope
+	demands_enforced_effect = {
+		every_owned_province = {
+			limit = {
+				OR = {
+					area = galicia_area
+					culture = galician
+					has_rebel_faction = REB
+				}
+			}
+			add_local_autonomy = 30
+			remove_building = fort_15th				# fuck yer castles m8
+			remove_building = fort_16th				# fuck yer castles m8
+			remove_building = fort_17th				# fuck yer castles m8
+			remove_building = fort_18th				# fuck yer castles m8
+			owner = { # Yes. That's -5 Legitimacy per occupied province. They came here to break nobility privileges y'know.
+				add_legitimacy = -5
+			}
+		}
+		if = {
+			limit = { has_disaster = peasant_war }
+			end_disaster = peasant_war
+			clr_country_flag = peasant_protests
+			clr_country_flag = religious_revolt
+			clr_country_flag = obsolete_forces
+#			clr_country_flag = peasants_war_can_end
+
+			remove_country_modifier = enforce_serfdom
+			remove_country_modifier = restrict_serfdom
+			remove_country_modifier = religious_intolerance
+			remove_country_modifier = religious_tolerance
+			remove_country_modifier = support_troops
+			remove_country_modifier = obsolete_forces
+			remove_country_modifier = isolate_rebels
+			add_prestige = -50
+		}
+		add_legitimacy = -30
+		add_prestige = -50
+	}
+}

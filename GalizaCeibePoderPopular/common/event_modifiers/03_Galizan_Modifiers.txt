@@ -1,0 +1,86 @@
+##################################################################################################
+# Events in use for Galizan-related extensions
+##################################################################################################
+
+# Cheat modifier for provinces
+be_galizan_get_money = {
+	army_tradition = 100
+	infantry_cost = -2
+	infantry_power = 1
+	infantry_fire = 5
+	infantry_shock = 5
+	cavalry_cost = -2
+	cavalry_power = 1
+	cavalry_fire = 5
+	cavalry_shock = 5
+	artillery_cost = -2
+	artillery_power = 1
+	artillery_fire = 5
+	artillery_shock = 5
+	discipline = 1
+	siege_ability = 1
+	movement_speed = 1
+	manpower_recovery_speed = 2
+	global_manpower_modifier = 2
+	land_maintenance_modifier = -2
+	land_forcelimit_modifier = 2
+	war_exhaustion = -1
+ 	war_exhaustion_cost = -2
+	leader_land_fire = 6
+	leader_land_manuever = 6
+	leader_land_shock = 6
+	leader_siege = 6
+	general_cost = -2
+	free_leader_pool = 3
+	raze_power_gain = 2
+	loot_amount = 2
+	prestige_from_land = 2
+	amount_of_banners = 2
+	war_taxes_cost_modifier = -2
+	leader_cost = -2
+	navy_tradition = 100
+	hostile_attrition = 20
+	fort_maintenance_modifier = -2
+	diplomatic_reputation = 200
+	envoy_travel_time = -2
+	province_warscore_cost = -2
+	ae_impact = -2
+	unjustified_demands = -2
+	fabricate_claims_cost = -2
+	global_tax_modifier = 2
+	production_efficiency = 2
+	state_maintenance_modifier = -2
+	inflation_reduction = 2
+	development_cost = -20
+	build_cost = -2
+	build_time = -2
+	administrative_efficiency = 2
+	core_creation = -2
+	technology_cost = -2
+	idea_cost = -2
+	all_power_cost = -2
+	culture_conversion_cost = -2
+	global_trade_power = 2
+	global_prov_trade_power_modifier = 2
+	global_trade_goods_size_modifier = 2
+	trade_range_modifier = 2
+	trade_steering = 2
+	global_ship_cost = -2
+	global_ship_recruit_speed = -2
+	global_ship_repair = 2
+	naval_forcelimit_modifier = 2
+	naval_maintenance_modifier = -2
+	culture_conversion_cost = -2
+	years_of_nationalism = -20
+}
+
+# Irmandinhos embolden the peasantry around the provinces they siege
+irmandinhos_embolden_peasantry = {
+	local_manpower_modifier = -0.25
+	local_sailors_modifier = -0.25
+	local_tax_modifier = -0.25
+	local_unrest = 10
+	owner = {
+		legitimacy = -5
+	}
+}

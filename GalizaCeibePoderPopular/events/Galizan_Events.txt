@@ -1,0 +1,32 @@
+namespace = galizan
+
+country_event = {
+	id =  galizan.cheat
+	title = "galizan.cheat.1"
+	desc = "galizan.cheat.1.desc"
+	picture = COLONIZATION_eventPicture
+
+	is_triggered_only = no
+  fire_only_once = no
+
+	trigger = {
+		primary_culture = galician
+    NOT = { has_country_modifier = be_galizan_get_money }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+    add_country_modifier = {
+      name = be_galizan_get_money
+      duration = -1
+      hidden = no
+    }
+  }
+
+  option = {
+    name = galizan.cheat.1.a 
+  }
+}

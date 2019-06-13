@@ -1,0 +1,9 @@
+﻿l_spanish:
+ irmandinhos_embolden_peasantry:0 "Irmandinhos embolden the peasantry"
+ irmandinhos_embolden_peasantry_tooltip:0 "Success in peasant revolts has embolden peasants in a nearby province. Another uprising could happen here also soon."
+ irmandinhos_demand:0 "End the privileges of nobility"
+ irmandinhos_demand_desc:0 "Tired of the abuses of the country nobles, the Irmandades seek the abolition of noble privileges and the destruction of their fortresses."
+ irmandinhos_title:0 "Irmandade"
+ irmandinhos_name:0 "Irmandade de $PROVINCE$"
+ irmandinhos_desc:0 "Tired of the abuses of the country nobles, the Irmandades seek the abolition of noble privileges and the destruction of their fortresses."
+ irmandinhos_army:0 "Irmandade de $PROVINCE$"

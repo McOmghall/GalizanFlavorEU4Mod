@@ -1,17 +1,23 @@
-namespace = galizan
+########################################
+# New flavor events for an independent Galicia
+#
+# written by Pedro Montoto
+########################################
 
+namespace = galician
+
+# Become powerful for testing purposes
 country_event = {
-	id =  galizan.cheat
-	title = "galizan.cheat.1"
-	desc = "galizan.cheat.1.desc"
-	picture = COLONIZATION_eventPicture
+	id =  galician.1
+	title = "galician.EVTNAME1"
+	desc = "galician.EVTDESC1"
+	picture = REFORM_eventPicture
 
 	is_triggered_only = no
-  fire_only_once = no
+	fire_only_once = no
 
 	trigger = {
-		primary_culture = galician
-    NOT = { has_country_modifier = be_galizan_get_money }
+		always = yes
 	}
 
 	mean_time_to_happen = {
@@ -19,14 +25,14 @@ country_event = {
 	}
 
 	immediate = {
-    add_country_modifier = {
-      name = be_galizan_get_money
-      duration = -1
-      hidden = no
-    }
-  }
+		add_country_modifier = {
+			name = be_galizan_get_money
+			duration = -1
+			hidden = no
+		}
+	}
 
-  option = {
-    name = galizan.cheat.1.a 
-  }
+	option = {
+		name = galician.EVTOPTA1
+	}
 }

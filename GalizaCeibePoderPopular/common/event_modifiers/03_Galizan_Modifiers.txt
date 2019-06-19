@@ -59,7 +59,6 @@ be_galizan_get_money = {
 	technology_cost = -2
 	idea_cost = -2
 	all_power_cost = -2
-	culture_conversion_cost = -2
 	global_trade_power = 2
 	global_prov_trade_power_modifier = 2
 	global_trade_goods_size_modifier = 2

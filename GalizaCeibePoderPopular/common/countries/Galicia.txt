@@ -75,7 +75,7 @@ monarch_names = {
 	"Vitor #0" = 0
 	"Xoan #0" = 0
 	"Xurxo #0" = 0
-	
+
 	"Branca #0" = -1
 	"Iria #0" = -1
 	"Sabela #0" = -1
@@ -83,7 +83,7 @@ monarch_names = {
 
 leader_names = {
 	Agra Aguiar Almeida Álvares Andrade Aloites
-	Barbosa Barros Betotes Carballo Cardoso Carpinteiro Carrasco Castro "de Cela" 
+	Barbosa Barros Betotes Carballo Cardoso Carpinteiro Carrasco Castro "de Cela"
 	Chao "Deza-Churruchaos" Costa Cunha Cuíña Cadrón "do Campo" Conde Gonzalves Guterres
 	Feixóo Ferreira Fidalgo Figueiredo Figueiroa Fonseca Froilaz Fruela
 	Guerreiro Lopes Mariño Moreira Mosqueira Ocampo Padrón Pereira Peres Pena Pais
@@ -96,7 +96,7 @@ ship_names = {
 	Lugo Ourense "Ponte Vedra" Baiona Tui Vares Malpica "Nosa Se?ora"
 	Audaz Afouteza "Costa da Morte" Noia Rías "Rei García Segundo"
 	Trastámara Froilaz Irmandade Atlántico "Fin do Mundo" Cantábrico
-	"Heroe do Mar" Fragoso Intrépido Coraxe Corazón Indomábel 
+	"Heroe do Mar" Fragoso Intrépido Coraxe Corazón Indomábel
 }
 
 army_names = {

@@ -75,11 +75,18 @@ be_galizan_get_money = {
 
 # Irmandinhos embolden the peasantry around the provinces they siege
 irmandinhos_embolden_peasantry = {
-	local_manpower_modifier = -0.25
-	local_sailors_modifier = -0.25
-	local_tax_modifier = -0.25
 	local_unrest = 10
-	owner = {
-		legitimacy = -5
-	}
+	min_local_autonomy = 50
+	local_autonomy = 0.1
+	legitimacy = -1
+}
+
+# Irmandinhos defeated the local nobility then lost control to monarch
+irmandinhos_weakened_local_nobility = {
+	local_manpower_modifier = 0.25
+	local_sailors_modifier = 0.25
+	local_tax_modifier = 0.25
+	local_production_efficiency = 0.25
+	local_autonomy = -0.1
+	development_cost = -0.25
 }

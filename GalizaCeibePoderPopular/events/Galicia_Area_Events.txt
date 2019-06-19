@@ -1,0 +1,94 @@
+########################################
+# New flavor events for the Galicia and surrounding areas
+#
+# written by Pedro Montoto
+########################################
+
+namespace = galician_area
+
+# The irmandiño wars, a peasant revolt against privileges of nobility: Starting event.
+country_event = {
+	id = galician_area.1
+	title = "galician_area.EVTNAME1"
+	desc = "galician_area.EVTDESC1"
+	picture = ANGRY_MOB_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+    any_owned_province = {
+      area = galicia_area
+    }
+    is_year = 1444
+		NOT = { is_year = 1500 }
+	}
+
+	mean_time_to_happen = { # The great brotherhood rises in 1467
+		months = 276
+	}
+
+	immediate = {
+		random_owned_province = {
+			limit = {
+				area = galicia_area
+			}
+			spawn_rebels = {
+				friend = GAL
+				type = irmandinhos
+				size = 2
+				win = yes
+				leader = "Alfonso de Lanzós"
+				name = "Grande Irmandade"
+				culture = THIS
+			}
+		}
+	}
+
+	option = {		# The fire rises
+		name = "galician_area.EVTOPTA1"
+    set_country_flag = irmandinho_war_started
+	}
+}
+
+# The irmandiño wars, a peasant revolt against privileges of nobility: Ending event.
+country_event = {
+	id = galician_area.100
+	title = "galician_area.EVTNAME100"
+	desc = "galician_area.EVTDESC100"
+	picture = ANGRY_MOB_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+    has_country_flag = irmandinho_war_started
+    NOT = { has_country_flag = irmandinho_war_lost }
+    all_owned_province = {
+			controlled_by = ROOT
+      NOT = { has_province_modifier = irmandinhos_embolden_peasantry }
+    }
+		any_owned_province = {
+			has_province_flag = was_occupied_by_irmandinhos
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	option = { # Winning the irmandinho wars paves the way for greater centralization and reduced local noble powers in the occupied provinces
+		name = "galician_area.EVTOPTA100"
+
+		add_legitimacy = 10
+    every_owned_province = {
+      limit = {
+        has_province_flag = was_occupied_by_irmandinhos
+      }
+      add_province_modifier = {
+        name = irmandinhos_weakened_local_nobility
+        duration = -1
+				desc = irmandinhos_weakened_local_nobility_tooltip
+				hidden = no
+      }
+    }
+	}
+}

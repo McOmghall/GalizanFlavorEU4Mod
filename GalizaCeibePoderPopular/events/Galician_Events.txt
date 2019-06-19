@@ -6,18 +6,18 @@
 
 namespace = galician
 
-# Become powerful for testing purposes
+# CHEAT: Become powerful for testing purposes
 country_event = {
-	id =  galician.1
-	title = "galician.EVTNAME1"
-	desc = "galician.EVTDESC1"
+	id =  galician.cheat
+	title = "galician.EVTNAMECHEAT"
+	desc = "galician.EVTDESCCHEAT"
 	picture = REFORM_eventPicture
 
-	is_triggered_only = no
+	is_triggered_only = yes
 	fire_only_once = no
 
 	trigger = {
-		always = yes
+		always = no
 	}
 
 	mean_time_to_happen = {
@@ -33,6 +33,6 @@ country_event = {
 	}
 
 	option = {
-		name = galician.EVTOPTA1
+		name = galician.EVTOPTACHEAT
 	}
 }

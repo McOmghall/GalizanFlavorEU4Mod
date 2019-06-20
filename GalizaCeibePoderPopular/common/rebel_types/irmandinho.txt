@@ -20,7 +20,7 @@ irmandinhos = {
 	unit_transfer = no				# Units do not remain after enforcing demands.
 	will_relocate = yes				# Units will relocate if they have sieged all provinces nearby and has to move over sea.
 
-	artillery = 0.1					# Canón de pau
+	artillery = 0.1					# Canï¿½n de pau
 	infantry = 0.8
 	cavalry = 0.1
 	morale = 1.0
@@ -105,14 +105,14 @@ irmandinhos = {
 			unrest = 6
 		}
 		modifier = {
-			factor = 11
+			factor = 10
 			OR = {
 				area = galicia_area
 				culture = galician
 			}
 		}
 		modifier = {
-			factor = 10
+			factor = 5
 			OR = {
 				has_building = fort_15th				# fuck yer castles m8
 				has_building = fort_16th				# fuck yer castles m8

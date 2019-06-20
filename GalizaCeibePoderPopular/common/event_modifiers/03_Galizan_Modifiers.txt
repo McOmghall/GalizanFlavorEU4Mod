@@ -90,3 +90,16 @@ irmandinhos_weakened_local_nobility = {
 	local_autonomy = -0.1
 	development_cost = -0.25
 }
+
+# Irmandinhos used against the local nobility
+irmandinhos_used_against_nobility = {
+	max_absolutism = 10
+	legitimacy = 1
+	global_autonomy = -0.05
+}
+
+# Irmandinhos negotiated with
+irmandinhos_negotiated_with = {
+	legitimacy = 1
+	global_autonomy = -0.05
+}

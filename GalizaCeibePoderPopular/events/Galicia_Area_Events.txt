@@ -21,13 +21,99 @@ country_event = {
     }
     is_year = 1444
 		NOT = { is_year = 1500 }
+		has_estate = estate_nobles
 	}
 
-	mean_time_to_happen = { # The great brotherhood rises in 1467
-		months = 276
+	mean_time_to_happen = {
+		# The great brotherhood rises in 1467
+		# Usually Castille will get modifiers by 0.8 * 0.8 * 0.5
+		months = 870
+
+		# Unstable countries get revolts faster
+		modifier = {
+			factor = 0.8
+			NOT = { stability = 0 }
+		}
+
+		# A powerful local nobility stirs peasants to revolt
+		# Default Castille gets this
+		modifier = {
+			factor = 0.8
+			estate_influence = {
+    		estate = estate_nobles
+    		influence = 50
+			}
+		}
+
+		# A more powerful local nobility stirs more peasants to revolt
+		# Default Castille gets this
+		modifier = {
+			factor = 0.8
+			estate_influence = {
+    		estate = estate_nobles
+    		influence = 70
+			}
+		}
+
+		# England helped the irmandiños to revolt
+		# Usually Default Castille gets this
+		modifier = {
+			factor = 0.5
+			OR = {
+				ENG = {
+					NOT = {
+						has_opinion = {
+							who = ROOT
+							value = 80
+						}
+					}
+				}
+				AND = {
+					GBR = {
+						NOT = {
+							has_opinion = {
+								who = ROOT
+								value = 80
+							}
+						}
+					}
+					NOT = { exists = ENG }
+				}
+			}
+		}
+
+		# England helped the irmandiños to revolt, if they're your friend then it's no problem
+		modifier = {
+			factor = 100
+			OR = {
+				ENG = {
+					has_opinion = {
+						who = ROOT
+						value = 80
+					}
+				}
+				AND = {
+					GBR = {
+						has_opinion = {
+							who = ROOT
+							value = 80
+						}
+					}
+					NOT = { exists = ENG }
+				}
+			}
+		}
 	}
 
-	immediate = {
+	option = {
+		# Help local nobility against the irmandiños
+		name = "galician_area.EVTOPTA1"
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 30
+		}
+		add_prestige = 5
+		set_country_flag = irmandinho_war_started
 		random_owned_province = {
 			limit = {
 				area = galicia_area
@@ -38,15 +124,66 @@ country_event = {
 				size = 2
 				win = yes
 				leader = "Alfonso de Lanzós"
-				name = "Grande Irmandade"
 				culture = THIS
 			}
 		}
 	}
 
-	option = {		# The fire rises
-		name = "galician_area.EVTOPTA1"
-    set_country_flag = irmandinho_war_started
+	option = {
+		# Seize the opportunity to curtail noble perrogative and reinforce the authority of the king
+		name = "galician_area.EVTOPTB1"
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -40
+		}
+		add_legitimacy = 20
+		add_prestige = -5
+		add_country_modifier = {
+			name = irmandinhos_used_against_nobility
+			duration = 3650
+			desc = irmandinhos_used_against_nobility_tooltip
+			hidden = no
+		}
+		set_country_flag = irmandinho_war_started
+		random_owned_province = {
+			limit = {
+				area = galicia_area
+			}
+			spawn_rebels = {
+				friend = GAL
+				type = irmandinhos
+				size = 3
+				win = yes
+				leader = "Alfonso de Lanzós"
+				culture = THIS
+			}
+		}
+	}
+
+	option = {
+		# Negotiate
+		name = "galician_area.EVTOPTC1"
+		add_prestige = -10
+		add_legitimacy = 10
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 10
+		}
+		add_estate_influence = {
+			estate = estate_nobles
+			influence = -10
+		}
+		random_owned_province = {
+			limit = {
+				area = galicia_area
+			}
+			add_province_modifier = {
+				name = irmandinhos_negotiated_with
+				duration = 3650
+				desc = irmandinhos_negotiated_with_tooltip
+				hidden = no
+			}
+		}
 	}
 }
 

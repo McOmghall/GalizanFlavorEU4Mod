@@ -88,7 +88,6 @@ irmandinhos_weakened_local_nobility = {
 	local_tax_modifier = 0.25
 	local_production_efficiency = 0.25
 	local_autonomy = -0.1
-	development_cost = -0.25
 }
 
 # Irmandinhos used against the local nobility
